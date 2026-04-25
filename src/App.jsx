@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import './App.css';
 import Navbar from './components/navbar.jsx';
 import Hero from './components/hero.jsx';
@@ -6,9 +6,18 @@ import About from './components/about.jsx';
 import Projects from './components/project.jsx';
 import Contact from './components/contact.jsx';
 import CursorGlow from './components/CursorGlow.jsx';
+import VoiceChatbot from './components/VoiceChatbot.jsx';
+import Loader from './components/Loader.jsx';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoaderFinish = useCallback(() => {
+    setLoading(false);
+  }, []);
+
   useEffect(() => {
+    if (loading) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -21,7 +30,11 @@ function App() {
     );
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [loading]);
+
+  if (loading) {
+    return <Loader onFinish={handleLoaderFinish} />;
+  }
 
   return (
     <>
@@ -30,6 +43,7 @@ function App() {
       <div className="orb orb-2" />
 
       <CursorGlow />
+      <VoiceChatbot />
 
       <Navbar />
 

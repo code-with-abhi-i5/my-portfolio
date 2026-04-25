@@ -1,0 +1,224 @@
+/* ============================================
+   PAGE LOADER — Premium Splash Screen
+   ============================================ */
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.8s ease;
+  overflow: hidden;
+}
+
+.loader-overlay.exit {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* ── Background Blobs ── */
+.loader-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0;
+  animation: loaderBlobIn 1.2s ease forwards;
+}
+
+.loader-blob-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%);
+  top: -10%;
+  right: -5%;
+  animation-delay: 0.2s;
+}
+
+.loader-blob-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent 70%);
+  bottom: -8%;
+  left: -5%;
+  animation-delay: 0.5s;
+}
+
+.loader-blob-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 255, 148, 0.1), transparent 70%);
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0.8s;
+}
+
+@keyframes loaderBlobIn {
+  0%   { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Center Content ── */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Logo ── */
+.loader-logo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: loaderLogoIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+.loader-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+}
+
+.loader-logo-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#050508, #050508) padding-box,
+    conic-gradient(from 0deg, #00d4ff, #8b5cf6, #00ff94, #00d4ff) border-box;
+  animation: loaderRingSpin 3s linear infinite;
+}
+
+@keyframes loaderLogoIn {
+  0%   { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes loaderRingSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Brand Letters ── */
+.loader-brand {
+  display: flex;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 3px;
+  color: #f0f0f8;
+}
+
+.loader-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: loaderLetterIn 0.4s ease forwards;
+}
+
+@keyframes loaderLetterIn {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Loading Status ── */
+.loader-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+  animation: loaderFadeIn 0.6s ease 1.2s both;
+}
+
+.loader-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4ff;
+  box-shadow: 0 0 10px #00d4ff;
+  animation: loaderDotPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes loaderDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.7); }
+}
+
+.loader-dots span {
+  display: inline-block;
+  animation: loaderDotsAnim 1.2s ease-in-out infinite;
+}
+
+@keyframes loaderDotsAnim {
+  0%, 60%, 100% { opacity: 0; }
+  30%           { opacity: 1; }
+}
+
+@keyframes loaderFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Progress Bar ── */
+.loader-progress-track {
+  width: 180px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  animation: loaderFadeIn 0.6s ease 1.4s both;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00d4ff, #8b5cf6, #00ff94);
+  border-radius: 2px;
+  animation: loaderProgressFill 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes loaderProgressFill {
+  0%   { width: 0%; }
+  30%  { width: 40%; }
+  60%  { width: 70%; }
+  85%  { width: 90%; }
+  100% { width: 100%; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 540px) {
+  .loader-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .loader-logo-text {
+    font-size: 38px;
+  }
+  .loader-progress-track {
+    width: 140px;
+  }
+}

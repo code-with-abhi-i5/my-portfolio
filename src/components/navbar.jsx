@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
-  { id: 'home',     num: '01', label: 'Home' },
-  { id: 'about',    num: '02', label: 'About' },
+  { id: 'home', num: '01', label: 'Home' },
+  { id: 'about', num: '02', label: 'About' },
   { id: 'projects', num: '03', label: 'Projects' },
-  { id: 'contact',  num: '04', label: 'Contact' },
+  { id: 'contact', num: '04', label: 'Contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [active,   setActive]   = useState('home');
-  const [open,     setOpen]     = useState(false);
+  const [active, setActive] = useState('home');
+  const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="navbar-inner">
-        <span className="navbar-logo" onClick={() => go('home')}>AB.</span>
+        <span className="navbar-logo" onClick={() => go('home')}>Abhijeet Ghosh</span>
 
         <button
           className={`hamburger${open ? ' open' : ''}`}
