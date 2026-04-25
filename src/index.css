@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f0f0f4;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --bg-card-hover: rgba(0, 0, 0, 0.08);
+  --text-primary: #0f1115;
+  --text-secondary: #3b4252;
+  --text-muted: #6b7280;
+  --border: rgba(0, 0, 0, 0.1);
+}
+
+.light .grid-bg {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+}
