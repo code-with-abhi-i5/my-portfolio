@@ -1,0 +1,121 @@
+/* ============================================
+   BACK TO TOP BUTTON — Premium Floating UI
+   ============================================ */
+
+.back-to-top {
+  position: fixed;
+  bottom: 96px; /* Positioned slightly above the Voice Chatbot */
+  right: 28px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(12px) saturate(180%);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9988;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Gradient Border Masking */
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, #8b5cf6, #00d4ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.back-to-top:hover {
+  background: rgba(139, 92, 246, 0.2);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.back-to-top:hover::before {
+  opacity: 1;
+}
+
+.back-to-top:active {
+  transform: translateY(2px) scale(0.95);
+}
+
+.btt-icon-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00d4ff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.back-to-top:hover .btt-icon-wrap {
+  color: #fff;
+  animation: bttBounce 1s ease-in-out infinite alternate;
+}
+
+.btt-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.back-to-top:hover .btt-glow {
+  opacity: 1;
+}
+
+@keyframes bttBounce {
+  0% { transform: translateY(-2px); }
+  100% { transform: translateY(-5px); }
+}
+
+/* Light mode support */
+.light .back-to-top {
+  background: rgba(255, 255, 255, 0.8);
+  color: #0f1115;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light .btt-icon-wrap {
+  color: #8b5cf6;
+}
+
+.light .back-to-top:hover .btt-icon-wrap {
+  color: #00d4ff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 540px) {
+  .back-to-top {
+    width: 44px;
+    height: 44px;
+    right: 20px;
+    bottom: 84px; /* Above the smaller mobile chatbot button */
+  }
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AvatarWithEffect from './AvatarWithEffect.jsx';
 
 const ROLES = [
   'Frontend Developer',
@@ -79,9 +80,15 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
-            <button className="btn-outline" onClick={() => go('contact')}>
-              Hire Me
-            </button>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-resume">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <polyline points="9 15 12 18 15 15"></polyline>
+              </svg>
+              Resume
+            </a>
           </div>
 
           <div className="hero-stats fade-in-5">
@@ -100,14 +107,8 @@ export default function Hero() {
             <div className="avatar-ring" />
             <div className="avatar-ring avatar-ring-2" />
 
-            <div className="avatar-img">
-              {/* 
-                Apni photo lagani ho toh:
-                1. Photo public/ folder mein rakho (e.g. public/photo.jpg)
-                2. Neeche ki line uncomment karo aur span hatao
-              */}
-              {/* <img src="/photo.jpg" alt="Abhijeet" style={{ width:'100%', height:'100%', objectFit:'cover' }} /> */}
-              <span className="avatar-initials">AB</span>
+            <div className="avatar-img" style={{ padding: 0, overflow: 'hidden', border: 'none', background: 'transparent' }}>
+              <AvatarWithEffect />
             </div>
 
             <div className="float-badge float-badge-1">

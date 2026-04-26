@@ -3,11 +3,15 @@ import './App.css';
 import Navbar from './components/navbar.jsx';
 import Hero from './components/hero.jsx';
 import About from './components/about.jsx';
+import Education from './components/Education.jsx';
 import Projects from './components/project.jsx';
 import Contact from './components/contact.jsx';
-import CursorGlow from './components/CursorGlow.jsx';
+import ParticlesCursor from './components/ParticlesCursor.jsx';
 import VoiceChatbot from './components/VoiceChatbot.jsx';
 import Loader from './components/Loader.jsx';
+import ScrollProgress from './components/ScrollProgress.jsx';
+import BackToTop from './components/BackToTop.jsx';
+import ParticleBackground from './components/ParticleBackground.jsx';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -38,12 +42,15 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
+      <ParticleBackground />
       <div className="grid-bg" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
 
-      <CursorGlow />
+      <ParticlesCursor />
       <VoiceChatbot />
+      <BackToTop />
 
       <Navbar />
 
@@ -53,6 +60,9 @@ function App() {
         </section>
         <section id="about">
           <About />
+        </section>
+        <section id="education">
+          <Education />
         </section>
         <section id="projects">
           <Projects />

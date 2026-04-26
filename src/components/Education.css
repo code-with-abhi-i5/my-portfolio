@@ -1,0 +1,211 @@
+/* ============================================
+   EDUCATION SECTION — Premium Timeline
+   ============================================ */
+
+.education-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-wrapper {
+  position: relative;
+  padding: 40px 0;
+  margin-top: 20px;
+}
+
+/* Vertical Line */
+.timeline-line {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(139, 92, 246, 0.8), rgba(0, 212, 255, 0.2), transparent);
+  border-radius: 2px;
+}
+
+/* Timeline Item */
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 48px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Glowing Dot */
+.timeline-dot {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(10, 10, 20, 1);
+  border: 2px solid #8b5cf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.6);
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  border-color: #00d4ff;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.8);
+}
+
+.dot-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #00d4ff);
+}
+
+/* Glassmorphism Card */
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Gradient Border */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #8b5cf6, #00d4ff);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(139, 92, 246, 0.15);
+}
+
+.timeline-item:hover .timeline-content::before {
+  opacity: 1;
+}
+
+/* Typography Inside Card */
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.edu-degree {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #f0f0f8;
+  margin: 0;
+}
+
+.edu-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* Glowing Badge for Pursuing */
+.edu-status.active {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.2);
+}
+
+.edu-institution {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #a0a0b0;
+  margin: 0 0 14px 0;
+}
+
+.edu-duration {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #8b5cf6;
+  margin-bottom: 18px;
+}
+
+.edu-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #d0d0e0;
+  margin: 0;
+}
+
+/* Light Mode Support */
+.light .timeline-content {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.light .timeline-item:hover .timeline-content {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.light .edu-degree { color: #0f1115; }
+.light .edu-institution { color: #404050; }
+.light .edu-desc { color: #303040; }
+.light .timeline-dot { background: #fff; }
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .timeline-item {
+    padding-left: 40px;
+  }
+  .timeline-dot {
+    width: 20px;
+    height: 20px;
+    left: 9px;
+  }
+  .dot-inner {
+    width: 8px;
+    height: 8px;
+  }
+  .timeline-line {
+    left: 18px;
+  }
+  .timeline-content {
+    padding: 20px;
+  }
+}

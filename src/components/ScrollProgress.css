@@ -1,0 +1,51 @@
+/* ============================================
+   SCROLL PROGRESS BAR — Neon Premium
+   ============================================ */
+
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10001;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8b5cf6, #00d4ff, #00ff94);
+  background-size: 200% 100%;
+  animation: scrollBarShimmer 3s linear infinite;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.15s ease-out;
+  position: relative;
+  box-shadow:
+    0 0 8px rgba(0, 212, 255, 0.5),
+    0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.scroll-progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 8px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00d4ff;
+  box-shadow: 0 0 12px #00d4ff, 0 0 24px rgba(0, 212, 255, 0.4);
+  opacity: 0.9;
+}
+
+@keyframes scrollBarShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Light mode */
+.light .scroll-progress-track {
+  background: rgba(0, 0, 0, 0.04);
+}

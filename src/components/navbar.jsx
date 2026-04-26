@@ -91,7 +91,7 @@ export default function Navbar() {
             </button>
           </li>
           <li>
-            <span className="nav-cta" onClick={() => go('contact')}>Hire Me</span>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-cta" style={{ textDecoration: 'none' }}>Resume</a>
           </li>
         </ul>
       </div>
