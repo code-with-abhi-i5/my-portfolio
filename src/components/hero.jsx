@@ -3,8 +3,8 @@ import AvatarWithEffect from './AvatarWithEffect.jsx';
 
 const ROLES = [
   'Frontend Developer',
-  'Data Analyst',
-  'UI Enthusiast',
+  'Three.js Enthusiast',
+  'Problem Solver',
 ];
 
 function useTyping(words) {
@@ -69,7 +69,7 @@ export default function Hero() {
 
           <p className="hero-bio fade-in-3">
             Crafting <strong>high-performance</strong> web experiences and turning{' '}
-            <strong>complex data</strong> into elegant frontends. Passionate about
+            <strong>ideas</strong> into elegant frontends. Passionate about
             clean code, beautiful UI, and scalable architecture.
           </p>
 
@@ -80,7 +80,7 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-resume">
+            <a href={resumePdf} download="Abhijeet_Ghosh_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-resume">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -115,7 +115,7 @@ export default function Hero() {
               <span className="badge-dot" />React &amp; TypeScript
             </div>
             <div className="float-badge float-badge-2">
-              <span className="badge-dot" />Data Analytics
+              <span className="badge-dot" />Frontend Architecture
             </div>
             <div className="float-badge float-badge-3">
               <span className="badge-dot" />Open to Work

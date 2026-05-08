@@ -30,7 +30,7 @@
   filter: blur(80px);
   pointer-events: none;
   opacity: 0;
-  animation: loaderBlobIn 1.2s ease forwards;
+  /* animation: loaderBlobIn 1.2s ease forwards; */
 }
 
 .loader-blob-1 {
@@ -79,36 +79,84 @@
 /* ── Logo ── */
 .loader-logo {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: loaderLogoIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+  /* animation: loaderLogoIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both; */
 }
 
-.loader-logo-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  user-select: none;
-  position: relative;
+.loader-logo-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
+  animation: logoGlowPulse 2s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.loader-logo-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   z-index: 2;
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
 }
 
-.loader-logo-ring {
+.loader-atom {
+  width: 60px;
+  height: 60px;
+  animation: atomFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+.atom-core {
+  fill: #00ff94;
+  animation: corePulse 1.5s ease-in-out infinite alternate;
+  transform-origin: 50px 50px;
+}
+
+.atom-orbit {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform-origin: 50px 50px;
+}
+
+.orbit-1 {
+  transform: rotate(30deg);
+  animation: orbitSpin1 4s linear infinite;
+}
+
+.orbit-2 {
+  transform: rotate(-30deg);
+  animation: orbitSpin2 4s linear infinite;
+}
+
+.orbit-3 {
+  transform: rotate(90deg);
+  animation: orbitSpin3 4s linear infinite;
+}
+
+.outer-ring {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
   border: 2px solid transparent;
   background:
     linear-gradient(#050508, #050508) padding-box,
-    conic-gradient(from 0deg, #00d4ff, #8b5cf6, #00ff94, #00d4ff) border-box;
-  animation: loaderRingSpin 3s linear infinite;
+    conic-gradient(from 0deg, #00d4ff, transparent, #8b5cf6, transparent, #00ff94, transparent, #00d4ff) border-box;
+  animation: loaderRingSpin 4s linear infinite;
+}
+
+.inner-ring {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 212, 255, 0.4);
+  background: transparent;
+  animation: loaderRingSpinReverse 6s linear infinite;
 }
 
 @keyframes loaderLogoIn {
@@ -120,20 +168,76 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes loaderRingSpinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes logoGlowPulse {
+  0% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes corePulse {
+  0% { transform: scale(0.85); fill: #00ff94; }
+  100% { transform: scale(1.15); fill: #00d4ff; filter: drop-shadow(0 0 10px #00d4ff); }
+}
+
+@keyframes atomFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.05); }
+}
+
+@keyframes orbitSpin1 {
+  0% { transform: rotate(30deg); }
+  100% { transform: rotate(390deg); }
+}
+@keyframes orbitSpin2 {
+  0% { transform: rotate(-30deg); }
+  100% { transform: rotate(330deg); }
+}
+@keyframes orbitSpin3 {
+  0% { transform: rotate(90deg); }
+  100% { transform: rotate(450deg); }
+}
+
 /* ── Brand Letters ── */
 .loader-brand {
   display: flex;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(28px, 5vw, 42px);
-  letter-spacing: 3px;
-  color: #f0f0f8;
+  font-family: 'Righteous', sans-serif;
+  font-size: clamp(32px, 6vw, 48px);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
 }
 
 .loader-letter {
   display: inline-block;
   opacity: 0;
   transform: translateY(20px);
-  animation: loaderLetterIn 0.4s ease forwards;
+  
+  background: linear-gradient(
+    90deg,
+    #00ff94 0%,
+    #00d4ff 33%,
+    #8b5cf6 66%,
+    #00ff94 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* animation-name: loaderLetterIn, loaderShine; */
+  /* animation-duration: 0.4s, 5s; */
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), linear;
+  animation-fill-mode: forwards, forwards;
+  animation-iteration-count: 1, infinite;
+}
+
+@keyframes loaderShine {
+  to {
+    background-position: 300% center;
+  }
 }
 
 @keyframes loaderLetterIn {
@@ -197,7 +301,7 @@
   width: 0%;
   background: linear-gradient(90deg, #00d4ff, #8b5cf6, #00ff94);
   border-radius: 2px;
-  animation: loaderProgressFill 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  /* animation: loaderProgressFill 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards; */
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
 }
 

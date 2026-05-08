@@ -1,0 +1,257 @@
+/* ============================================
+   ABOUT
+   ============================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* ============================================
+   RESPONSIVE — ABOUT
+   ============================================ */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-quote {
+    font-size: 15px;
+    padding-left: 14px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+.about-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.about-text strong {
+  color: var(--text-primary);
+}
+
+.about-quote {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.7;
+  border-left: 3px solid var(--cyan);
+  padding-left: 18px;
+  margin: 28px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.info-item {
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.info-item:hover {
+  border-color: rgba(0, 212, 255, 0.22);
+  background: var(--bg-card-hover);
+}
+
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.info-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.skill-category {
+  margin-bottom: 28px;
+}
+
+.skill-cat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--violet);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  padding: 7px 13px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-family: var(--font-mono), system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  transform: translateY(-2px);
+}
+
+.proficiency-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 28px 0 16px;
+}
+
+.prof-item {
+  margin-bottom: 18px;
+}
+
+.prof-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.prof-percent {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+}
+
+.bar-bg {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  width: 0%; /* GSAP will animate this */
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}
+
+.proficiency-section {
+  margin-top: 12px;
+}
+
+/* ============================================
+   INTERACTIVE BIO VISUALS
+   ============================================ */
+.about-grid {
+  position: relative;
+}
+
+.about-visuals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ghost-icon {
+  position: absolute;
+  font-size: 220px;
+  opacity: 0;
+  filter: blur(2px) drop-shadow(0 0 30px currentColor);
+  color: var(--cyan);
+  pointer-events: none;
+  transform: scale(0.3) rotate(-15deg);
+  z-index: -1;
+}
+
+/* Specific Colors for impact */
+.ghost-react { color: #00d4ff; }
+.ghost-js { color: #f7df1e; }
+.ghost-three { color: #8b5cf6; }
+.ghost-python { color: #3776ab; }
+
+/* The Glow Aura */
+.ghost-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  opacity: 0.2;
+  filter: blur(50px);
+  z-index: -2;
+}
+
+.keyword-highlight {
+  color: var(--cyan);
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  padding: 0 4px;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+}
+
+.keyword-highlight:hover {
+  color: #fff;
+  border-bottom-color: var(--cyan);
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+  transform: scale(1.1);
+}
+
+

@@ -1,17 +1,20 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
-import Navbar from './components/navbar.jsx';
-import Hero from './components/hero.jsx';
-import About from './components/about.jsx';
-import Education from './components/Education.jsx';
-import Projects from './components/project.jsx';
-import Contact from './components/contact.jsx';
-import ParticlesCursor from './components/ParticlesCursor.jsx';
-import VoiceChatbot from './components/VoiceChatbot.jsx';
-import Loader from './components/Loader.jsx';
-import ScrollProgress from './components/ScrollProgress.jsx';
-import BackToTop from './components/BackToTop.jsx';
-import ParticleBackground from './components/ParticleBackground.jsx';
+import Navbar from './ui/navbar.jsx';
+import Hero from './sections/hero.jsx';
+import About from './sections/about.jsx';
+import Education from './sections/Education.jsx';
+import Projects from './sections/project.jsx';
+import Contact from './sections/contact.jsx';
+import CursorGlow from './cursors/ParticlesCursor.jsx';
+import VoiceChatbot from './ui/VoiceChatbot.jsx';
+import Loader from './ui/Loader.jsx';
+import ScrollProgress from './ui/ScrollProgress.jsx';
+import BackToTop from './ui/BackToTop.jsx';
+import ParticleBackground from './3d/ParticleBackground.jsx';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,20 +23,15 @@ function App() {
     setLoading(false);
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (loading) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    gsap.registerPlugin(ScrollTrigger);
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [loading]);
 
   if (loading) {
@@ -42,13 +40,13 @@ function App() {
 
   return (
     <>
-      <ScrollProgress />
       <ParticleBackground />
+      <ScrollProgress />
       <div className="grid-bg" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
-
-      <ParticlesCursor />
+      
+      <CursorGlow />
       <VoiceChatbot />
       <BackToTop />
 

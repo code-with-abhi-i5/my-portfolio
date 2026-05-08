@@ -4,40 +4,53 @@ const SKILLS = [
   {
     cat: 'Frontend',
     skills: [
-      { n: 'React', i: '⚛️' }, { n: 'TypeScript', i: '🔷' },
-      { n: 'JavaScript', i: '🌟' }, { n: 'HTML5', i: '🧱' },
-      { n: 'CSS3', i: '🎨' }, { n: 'Vite', i: '⚡' }, { n: 'Tailwind', i: '💨' },
+      { n: 'React', i: '⚛️' },
+      { n: 'JavaScript', i: '🌟' },
+      { n: 'HTML5', i: '🧱' },
+      { n: 'CSS3', i: '🎨' },
+      { n: 'Tailwind CSS', i: '💨' },
+      { n: 'Three.js', i: '🔮' },
+      { n: 'Vite', i: '⚡' },
+
     ],
   },
   {
     cat: 'Data & Backend',
     skills: [
-      { n: 'Python', i: '🐍' }, { n: 'Pandas', i: '📊' },
-      { n: 'SQL', i: '🗄️' }, { n: 'Node.js', i: '🟢' },
-      { n: 'REST APIs', i: '🔗' }, { n: 'Axios', i: '📡' },
+      { n: 'Python', i: '🐍' },
+      { n: 'SQL', i: '🗄️' },
+      { n: 'REST APIs', i: '🔗' },
+      { n: 'Axios', i: '📡' },
     ],
   },
   {
     cat: 'Tools',
     skills: [
-      { n: 'Git', i: '🌿' }, { n: 'GitHub', i: '🐙' },
-      { n: 'VS Code', i: '💻' }, { n: 'Figma', i: '🎭' }, { n: 'Linux', i: '🐧' },
+      { n: 'Git', i: '🌿' },
+      { n: 'GitHub', i: '🐙' },
+      { n: 'VS Code', i: '💻' },
+      { n: 'Cursor AI', i: '🤖' },
+      { n: 'Figma', i: '🎭' },
+      { n: 'Firebase', i: '🔥' },
+      { n: 'Netlify', i: '🌐' },
+      { n: 'Wordpress', i: '🌐' },
+
     ],
   },
 ];
 
 const PROFS = [
-  { n: 'React / TypeScript', p: 90 },
-  { n: 'Data Analysis', p: 82 },
+  { n: 'React / JavaScript', p: 85 },
   { n: 'CSS / UI Design', p: 88 },
-  { n: 'Python', p: 78 },
-  { n: 'APIs & Integration', p: 85 },
+  { n: 'Three.js', p: 72 },
+  { n: 'Python', p: 65 },
+  { n: 'APIs & Integration', p: 80 },
 ];
 
 const INFO = [
-  { l: 'Name', v: 'Abhijeet Bhosale' },
+  { l: 'Name', v: 'Abhijeet Ghosh' },
   { l: 'Role', v: 'Frontend Developer' },
-  { l: 'Location', v: 'India 🇮🇳' },
+  { l: 'Location', v: 'Jamshedpur, Jharkhand 🇮🇳' },
   { l: 'Status', v: '✅ Open to Work' },
 ];
 
@@ -65,19 +78,18 @@ export default function About() {
         {/* Left: Bio */}
         <div>
           <p className="about-text reveal">
-            I&apos;m a <strong>Frontend Developer &amp; UI/UX Designer</strong> with a passion
-            for creating seamless digital experiences. I specialize in building scalable
-            React apps with TypeScript and transforming raw data into meaningful insights.
+            I&apos;m a <strong>Frontend Developer</strong> with a passion for building clean,
+            interactive web experiences. I work with React, JavaScript, and Three.js to craft
+            fast, visually engaging interfaces — backed by Python and SQL on the data side.
           </p>
 
           <p className="about-quote reveal reveal-delay-1">
-            &ldquo;Great software lives at the intersection of clean code, thoughtful
-            design, and data-driven decisions.&rdquo;
+            &ldquo;Code is craft. I write it to be readable, scalable, and worth shipping.&rdquo;
           </p>
 
           <p className="about-text reveal reveal-delay-2">
-            When I&apos;m not pushing pixels or wrangling datasets, I&apos;m exploring
-            open-source projects and staying up-to-date with the latest in the React ecosystem.
+            When I&apos;m not building projects, I&apos;m exploring open-source repos, experimenting
+            with 3D animations, and staying current with the frontend ecosystem.
           </p>
 
           <div className="info-grid">
@@ -106,7 +118,7 @@ export default function About() {
           ))}
 
           <div className="reveal reveal-delay-4">
-            <div className="proficiency-label">// Proficiency</div>
+            <div className="proficiency-label"> Proficiency</div>
             {PROFS.map(({ n, p }, i) => (
               <div className="prof-item" key={n}>
                 <div className="prof-header">
