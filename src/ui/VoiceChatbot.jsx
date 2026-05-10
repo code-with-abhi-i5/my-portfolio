@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react';
 import Magnetic from './Magnetic.jsx';
 import './VoiceChatbot.css';
 
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 async function getAIResponse(text) {
   try {

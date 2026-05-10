@@ -155,7 +155,7 @@ export default function Projects() {
     async function fetchRepos() {
       try {
         const headers = {
-          Authorization: `token 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`,
+          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
         };
         const res = await fetch(GITHUB_API, { headers });
         if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
