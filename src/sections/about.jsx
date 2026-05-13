@@ -201,7 +201,7 @@ export default function About() {
   return (
     <div className="container" ref={containerRef}>
       <div className="section-header">
-        <p className="section-label">Who I Am</p>
+        <p className="section-label">WHO I AM</p> 
         <h2 className="section-title">About <span>Me</span></h2>
       </div>
 
