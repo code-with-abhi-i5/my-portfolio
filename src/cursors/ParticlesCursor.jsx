@@ -21,11 +21,11 @@ export default function ParticlesCursor() {
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
     renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
     container.appendChild(renderer.domElement);
 
     // Particle pool
-    const MAX = 1200;
+    const MAX = 300;
     const positions = new Float32Array(MAX * 3);
     const colors = new Float32Array(MAX * 3);
     const sizes = new Float32Array(MAX);

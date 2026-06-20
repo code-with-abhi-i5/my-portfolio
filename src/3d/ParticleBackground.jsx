@@ -23,12 +23,12 @@ export default function ParticleBackground() {
     camera.position.z = 150;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
     renderer.setSize(window.innerWidth, window.innerHeight);
     mount.appendChild(renderer.domElement);
 
     // 2. Particle System Setup
-    const particleCount = window.innerWidth < 768 ? 90 : 180;
+    const particleCount = window.innerWidth < 768 ? 40 : 80;
     const particles = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const velocities = [];
@@ -162,7 +162,7 @@ export default function ParticleBackground() {
       let vertexpos = 0;
       let colorpos = 0;
       let numConnected = 0;
-      const maxDistSq = window.innerWidth < 768 ? 2500 : 4500;
+      const maxDistSq = window.innerWidth < 768 ? 6000 : 10000;
 
       for (let i = 0; i < particleCount; i++) {
         for (let j = i + 1; j < particleCount; j++) {
