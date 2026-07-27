@@ -170,6 +170,64 @@
   margin: 0 0 14px 0;
 }
 
+/* ============================================
+   ACHIEVEMENT ENTRY — GSSoC '26
+   ============================================ */
+.edu-status.achievement {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 145, 0, 0.12));
+  color: #ffc107;
+  border-color: rgba(255, 193, 7, 0.4);
+  box-shadow: 0 0 16px rgba(255, 193, 7, 0.25);
+}
+
+/* Golden glowing dot for the achievement */
+.is-achievement .timeline-dot {
+  border-color: #ffc107;
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.7);
+  animation: trophy-pulse 2.4s ease-in-out infinite;
+}
+
+.is-achievement:hover .timeline-dot {
+  border-color: #ffd54f;
+  box-shadow: 0 0 28px rgba(255, 193, 7, 0.9);
+}
+
+.dot-trophy {
+  font-size: 12px;
+  line-height: 1;
+}
+
+@keyframes trophy-pulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(255, 193, 7, 0.5); }
+  50% { box-shadow: 0 0 26px rgba(255, 193, 7, 0.9); }
+}
+
+/* Golden gradient accent + glow on the achievement card */
+.is-achievement .timeline-content {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), rgba(255, 255, 255, 0.03));
+  border-color: rgba(255, 193, 7, 0.22);
+}
+
+.is-achievement .timeline-content::before {
+  background: linear-gradient(to bottom, #ffc107, #ff9100);
+  opacity: 1;
+}
+
+.is-achievement:hover .timeline-content {
+  border-color: rgba(255, 193, 7, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 28px rgba(255, 193, 7, 0.2);
+}
+
+/* Highlight the global rank text inside the institution line */
+.is-achievement .edu-institution {
+  color: #c9b86a;
+}
+
+/* Golden parallax year for the achievement */
+.is-achievement .bg-year {
+  color: rgba(255, 193, 7, 0.05);
+}
+
 .edu-duration {
   display: flex;
   align-items: center;

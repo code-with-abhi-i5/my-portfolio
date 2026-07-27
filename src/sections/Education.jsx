@@ -9,6 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const EDU_DATA = [
   {
+    id: 0,
+    type: 'achievement',
+    degree: "GirlScript Summer of Code 2026",
+    institution: 'Open Source Contributor · Global Rank #278',
+    duration: '2026',
+    year: '2026',
+    status: 'GSSoC ’26',
+    desc: 'Contributed to multiple open-source projects globally and ranked #278 worldwide among thousands of contributors — improving real-world codebases through pull requests, bug fixes, and features.',
+  },
+  {
     id: 1,
     degree: 'Computer Science & Engineering (B.Tech)',
     institution: 'R.V.S.C.E.T. Jamshedpur',
@@ -107,19 +117,26 @@ export default function Education() {
         <div className="timeline-line" />
 
         {EDU_DATA.map((item) => (
-          <div key={item.id} className="timeline-item">
+          <div
+            key={item.id}
+            className={`timeline-item ${item.type === 'achievement' ? 'is-achievement' : ''}`}
+          >
             <div className="bg-year">{item.year}</div>
-            
+
             <Magnetic strength={0.4}>
               <div className="timeline-dot">
-                <span className="dot-inner" />
+                {item.type === 'achievement'
+                  ? <span className="dot-trophy">🏆</span>
+                  : <span className="dot-inner" />}
               </div>
             </Magnetic>
 
             <div className="timeline-content">
               <div className="edu-header">
                 <h3 className="edu-degree">{item.degree}</h3>
-                <span className={`edu-status ${item.status === 'Pursuing' ? 'active' : ''}`}>
+                <span
+                  className={`edu-status ${item.status === 'Pursuing' ? 'active' : ''} ${item.type === 'achievement' ? 'achievement' : ''}`}
+                >
                   {item.status}
                 </span>
               </div>

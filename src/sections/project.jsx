@@ -8,7 +8,7 @@ import './project.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GITHUB_API = 'https://api.github.com/users/code-with-abhi-i5/repos?per_page=100&type=all';
+const GITHUB_API = 'https://api.github.com/users/code-with-abhi-i5/starred?per_page=100';
 const GITHUB_PROFILE = 'https://github.com/code-with-abhi-i5';
 
 const GHIcon = () => (
@@ -24,8 +24,15 @@ const ExtIcon = () => (
   </svg>
 );
 
+const ForkIcon = () => (
+  <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <circle cx="12" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><circle cx="18" cy="6" r="3" />
+    <path d="M18 9v1a2 2 0 01-2 2H8a2 2 0 01-2-2V9" /><line x1="12" y1="12" x2="12" y2="15" />
+  </svg>
+);
+
 const StarIcon = () => (
-  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+  <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
 );
@@ -46,12 +53,12 @@ function ProjectCard({ repo, index }) {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       card.style.setProperty('--x', `${x}px`);
       card.style.setProperty('--y', `${y}px`);
 
-      const xPercent = (x / rect.width - 0.5) * 15;
-      const yPercent = (y / rect.height - 0.5) * -15;
+      const xPercent = (x / rect.width - 0.5) * 12;
+      const yPercent = (y / rect.height - 0.5) * -12;
 
       xTo(xPercent);
       yTo(yPercent);
@@ -66,8 +73,8 @@ function ProjectCard({ repo, index }) {
     card.addEventListener('mouseleave', handleLeave);
 
     // Perspective Scroll Effect
-    gsap.fromTo(card, 
-      { rotateX: 15, y: 50, opacity: 0 },
+    gsap.fromTo(card,
+      { rotateX: 12, y: 60, opacity: 0 },
       {
         rotateX: 0,
         y: 0,
@@ -75,7 +82,7 @@ function ProjectCard({ repo, index }) {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
-          start: 'top bottom-=100',
+          start: 'top bottom-=80',
           end: 'top center',
           scrub: 1
         }
@@ -90,12 +97,23 @@ function ProjectCard({ repo, index }) {
 
   const getIcon = (name) => {
     const n = name.toLowerCase();
-    if (n.includes('react')) return '⚛️';
-    if (n.includes('node')) return '🚀';
-    if (n.includes('web')) return '🌐';
-    if (n.includes('app')) return '📱';
-    if (n.includes('design')) return '🎨';
+    if (n.includes('react') || n.includes('next')) return '⚛️';
+    if (n.includes('node') || n.includes('express') || n.includes('server')) return '🚀';
+    if (n.includes('web') || n.includes('html') || n.includes('css')) return '🌐';
+    if (n.includes('app') || n.includes('mobile') || n.includes('flutter')) return '📱';
+    if (n.includes('design') || n.includes('figma') || n.includes('ui')) return '🎨';
+    if (n.includes('python') || n.includes('ai') || n.includes('ml') || n.includes('data')) return '🧠';
+    if (n.includes('game')) return '🎮';
+    if (n.includes('api') || n.includes('backend')) return '⚡';
+    if (n.includes('portfolio') || n.includes('personal')) return '💼';
     return '📂';
+  };
+
+  // Format date to "Jan 2024"
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
 
   return (
@@ -104,20 +122,20 @@ function ProjectCard({ repo, index }) {
       className={`project-card ${index < 2 ? 'featured' : ''}`}
     >
       <div className="project-card-border" />
-      {index < 2 && <span className="feat-badge">Featured Project</span>}
+      {index < 2 && <span className="feat-badge">★ Featured</span>}
 
       <div className="card-header">
         <div className="card-icon-wrapper">
           {getIcon(repo.name)}
         </div>
         <div className="card-links">
-          <Magnetic strength={0.1}>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="card-link" title="GitHub">
+          <Magnetic strength={0.15}>
+            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="card-link" title="View on GitHub">
               <GHIcon />
             </a>
           </Magnetic>
           {repo.homepage && (
-            <Magnetic strength={0.1}>
+            <Magnetic strength={0.15}>
               <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="card-link" title="Live Demo">
                 <ExtIcon />
               </a>
@@ -133,11 +151,14 @@ function ProjectCard({ repo, index }) {
       </div>
 
       <div className="card-stack">
-        {(repo.allLanguages || []).slice(0, 3).map((lang) => (
+        {(repo.allLanguages || []).slice(0, 4).map((lang) => (
           <span className="stack-tag" key={lang}>{lang}</span>
         ))}
         {repo.stargazers_count > 0 && (
-          <span className="stack-tag">⭐ {repo.stargazers_count}</span>
+          <span className="stack-tag"><StarIcon /> {repo.stargazers_count}</span>
+        )}
+        {repo.forks_count > 0 && (
+          <span className="stack-tag"><ForkIcon /> {repo.forks_count}</span>
         )}
       </div>
     </div>
@@ -162,6 +183,7 @@ export default function Projects() {
         const data = await res.json();
 
         const topRepos = data
+          .filter(repo => repo.owner.login === 'code-with-abhi-i5')
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
           .slice(0, 8);
 
@@ -197,12 +219,12 @@ export default function Projects() {
 
     gsap.from('.project-card', {
       opacity: 0,
-      y: 60,
-      skewY: 5,
+      y: 80,
+      rotateX: 15,
       scale: 0.9,
-      duration: 1,
+      duration: 1.2,
       stagger: {
-        each: 0.15,
+        each: 0.12,
         grid: 'auto',
         from: 'start'
       },
@@ -215,8 +237,9 @@ export default function Projects() {
 
     gsap.from('.projects-footer', {
       opacity: 0,
-      y: 20,
-      duration: 0.8,
+      y: 30,
+      duration: 1,
+      ease: 'power3.out',
       scrollTrigger: {
         trigger: '.projects-footer',
         start: 'top 90%',
@@ -232,13 +255,16 @@ export default function Projects() {
       </div>
 
       {loading && (
-        <p style={{ textAlign: 'center', color: 'var(--cyan)', padding: '3rem 0' }}>
-          Loading projects...
-        </p>
+        <div className="projects-loading">
+          <div className="loading-spinner" />
+          <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '13px' }}>
+            Fetching projects from GitHub...
+          </p>
+        </div>
       )}
 
       {error && (
-        <p style={{ textAlign: 'center', color: '#ff6b6b', padding: '3rem 0' }}>
+        <p style={{ textAlign: 'center', color: '#ff6b6b', padding: '3rem 0', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
           Failed to load projects — {error}
         </p>
       )}
@@ -253,9 +279,11 @@ export default function Projects() {
 
       <div className="projects-footer">
         <p>More projects on GitHub</p>
-        <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer" className="btn-outline">
-          <GHIcon /> View GitHub Profile
-        </a>
+        <Magnetic strength={0.2}>
+          <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer" className="btn-outline">
+            <GHIcon /> View GitHub Profile
+          </a>
+        </Magnetic>
       </div>
     </div>
   );

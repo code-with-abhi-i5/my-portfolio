@@ -67,6 +67,7 @@ const INFO = [
 export default function About() {
   const containerRef = useRef(null);
   const barsRef = useRef([]);
+  const rankRef = useRef(null);
 
   useGSAP(() => {
     // 1. Skill Tags Pop Animation with Float
@@ -168,6 +169,36 @@ export default function About() {
       });
     });
 
+    // 6. Achievement Card Reveal
+    gsap.from('.achievement-card', {
+      opacity: 0,
+      y: 40,
+      scale: 0.92,
+      duration: 1.1,
+      ease: 'back.out(1.6)',
+      scrollTrigger: {
+        trigger: '.achievement-card',
+        start: 'top 90%',
+      }
+    });
+
+    // 7. Rank Count-Up Animation (0 → 278)
+    if (rankRef.current) {
+      const counter = { val: 0 };
+      gsap.to(counter, {
+        val: 278,
+        duration: 2.4,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.achievement-card',
+          start: 'top 88%',
+        },
+        onUpdate: () => {
+          if (rankRef.current) rankRef.current.textContent = Math.round(counter.val);
+        }
+      });
+    }
+
   }, { scope: containerRef });
 
   const Keyword = ({ children, icon }) => {
@@ -227,9 +258,28 @@ export default function About() {
           </p>
 
           <p className="about-text">
-            When I&apos;m not building projects, I&apos;m exploring open-source repos, experimenting
-            with 3D animations, and staying current with the frontend ecosystem.
+            When I&apos;m not building projects, I&apos;m contributing to <Keyword icon="react">open-source</Keyword>,
+            experimenting with 3D animations, and staying current with the frontend ecosystem.
           </p>
+
+          {/* Achievement Highlight — GSSoC '26 */}
+          <div className="achievement-card">
+            <div className="achievement-glow" />
+            <div className="achievement-icon">🏆</div>
+            <div className="achievement-body">
+              <div className="achievement-badge">GSSoC &apos;26 · Open Source</div>
+              <div className="achievement-title">GirlScript Summer of Code 2026 Contributor</div>
+              <div className="achievement-desc">
+                Contributed to open-source projects globally and finished among the top
+                performers worldwide.
+              </div>
+            </div>
+            <div className="achievement-rank">
+              <span className="rank-hash">#</span>
+              <span className="rank-value" ref={rankRef}>0</span>
+              <span className="rank-label">Global Rank</span>
+            </div>
+          </div>
 
           <div className="info-grid">
             {INFO.map(({ l, v }) => (

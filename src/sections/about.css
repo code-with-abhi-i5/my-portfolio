@@ -236,6 +236,156 @@
   z-index: -2;
 }
 
+/* ============================================
+   ACHIEVEMENT CARD — GSSoC '26
+   ============================================ */
+.achievement-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 28px 0;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              border-color 0.4s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.45);
+}
+
+/* Animated gradient sweep border glow */
+.achievement-glow {
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--cyan) 90deg,
+    var(--violet) 180deg,
+    transparent 270deg
+  );
+  opacity: 0;
+  filter: blur(14px);
+  animation: achievement-spin 6s linear infinite;
+  transition: opacity 0.5s ease;
+}
+
+.achievement-card:hover .achievement-glow {
+  opacity: 0.55;
+}
+
+@keyframes achievement-spin {
+  to { transform: rotate(360deg); }
+}
+
+.achievement-icon {
+  font-size: 38px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.5));
+  animation: achievement-bob 3s ease-in-out infinite;
+}
+
+@keyframes achievement-bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+
+.achievement-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.achievement-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.achievement-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.achievement-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.achievement-rank {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 18px;
+  border-left: 1px solid var(--border);
+}
+
+.rank-hash {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--violet);
+  line-height: 1;
+}
+
+.rank-value {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.rank-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+@media (max-width: 480px) {
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .achievement-rank {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    width: 100%;
+  }
+}
+
 .keyword-highlight {
   color: var(--cyan);
   font-weight: 700;
