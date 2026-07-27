@@ -1,59 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Primary Meta Tags -->
-    <title>Abhijeet Ghosh — Frontend Developer & Portfolio</title>
-    <meta name="title" content="Abhijeet Ghosh — Frontend Developer & Portfolio" />
-    <meta name="description" content="Hi, I'm Abhijeet Ghosh — a Frontend Developer crafting high-performance web experiences with React, JavaScript, Three.js, and modern web tech. Explore my projects, skills, and get in touch!" />
-    <meta name="keywords" content="Abhijeet Ghosh, Frontend Developer, React Developer, Portfolio, JavaScript, Three.js, Web Developer, Jamshedpur" />
+    <!-- ═══════════════════════════════════════════
+         PRIMARY SEO META TAGS
+         ═══════════════════════════════════════════ -->
+    <title>Abhijeet Ghosh — Frontend Developer | React, JavaScript & Three.js Portfolio</title>
+    <meta name="title" content="Abhijeet Ghosh — Frontend Developer | React, JavaScript & Three.js Portfolio" />
+    <meta name="description" content="Hi, I'm Abhijeet Ghosh — a passionate Frontend Developer from Jamshedpur, India. I build high-performance, interactive web experiences using React, JavaScript, Three.js, GSAP & modern web technologies. Explore my projects, skills, and get in touch for opportunities!" />
+    <meta name="keywords" content="Abhijeet Ghosh, Frontend Developer, React Developer, JavaScript Developer, Three.js, GSAP, Web Developer, Portfolio, Jamshedpur, India, UI Developer, Frontend Engineer, Web Designer, React Portfolio, Open Source Contributor, GSSoC, Code With Abhi" />
     <meta name="author" content="Abhijeet Ghosh" />
-    <meta name="robots" content="index, follow" />
+    <meta name="creator" content="Abhijeet Ghosh" />
+    <meta name="publisher" content="Abhijeet Ghosh" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
     <meta name="theme-color" content="#050508" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- Open Graph / Facebook / LinkedIn -->
+    <!-- Canonical URL — prevents duplicate content issues -->
+    <link rel="canonical" href="https://abhijeetweb.in/" />
+
+    <!-- ═══════════════════════════════════════════
+         OPEN GRAPH / FACEBOOK / LINKEDIN
+         ═══════════════════════════════════════════ -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://abhijeetweb.in/" />
-    <meta property="og:title" content="Abhijeet Ghosh — Frontend Developer & Portfolio" />
-    <meta property="og:description" content="Frontend Developer crafting high-performance web experiences with React, JavaScript, Three.js. Explore my projects and get in touch!" />
+    <meta property="og:site_name" content="Abhijeet Ghosh Portfolio" />
+    <meta property="og:title" content="Abhijeet Ghosh — Frontend Developer | React & Three.js Portfolio" />
+    <meta property="og:description" content="Passionate Frontend Developer building high-performance web experiences with React, JavaScript, Three.js & GSAP. Explore my projects, skills, and connect!" />
     <meta property="og:image" content="https://abhijeetweb.in/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Abhijeet Ghosh — Frontend Developer Portfolio" />
+    <meta property="og:locale" content="en_IN" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://abhijeetweb.in/" />
-    <meta property="twitter:title" content="Abhijeet Ghosh — Frontend Developer" />
-    <meta property="twitter:description" content="Frontend Developer crafting high-performance web experiences with React, JavaScript, Three.js." />
-    <meta property="twitter:image" content="https://abhijeetweb.in/og-preview.png" />
+    <!-- ═══════════════════════════════════════════
+         TWITTER CARD
+         ═══════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://abhijeetweb.in/" />
+    <meta name="twitter:title" content="Abhijeet Ghosh — Frontend Developer" />
+    <meta name="twitter:description" content="Frontend Developer crafting high-performance web experiences with React, JavaScript & Three.js. Check out my portfolio!" />
+    <meta name="twitter:image" content="https://abhijeetweb.in/og-preview.png" />
+    <meta name="twitter:image:alt" content="Abhijeet Ghosh Portfolio Preview" />
 
-    <!-- Favicon -->
+    <!-- ═══════════════════════════════════════════
+         FAVICONS & ICONS
+         ═══════════════════════════════════════════ -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Preconnect for Google Fonts -->
+    <!-- ═══════════════════════════════════════════
+         PERFORMANCE — DNS Prefetch & Preconnect
+         ═══════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.github.com" />
+    <link rel="dns-prefetch" href="https://models.inference.ai.azure.com" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- ═══════════════════════════════════════════
+         STRUCTURED DATA — JSON-LD (RICH SNIPPETS)
+         ═══════════════════════════════════════════ -->
+    
+    <!-- Person Schema — For Google Knowledge Panel -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Abhijeet Ghosh",
+      "alternateName": "Code With Abhi",
       "url": "https://abhijeetweb.in",
+      "image": "https://abhijeetweb.in/og-preview.png",
+      "description": "Passionate Frontend Developer from Jamshedpur, India specializing in React, JavaScript, Three.js and modern web technologies.",
       "jobTitle": "Frontend Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance / Open Source"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "R.V.S.C.E.T. Jamshedpur"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jamshedpur",
+        "addressRegion": "Jharkhand",
+        "addressCountry": "IN"
+      },
+      "email": "contact@abhijeetweb.in",
       "sameAs": [
         "https://github.com/code-with-abhi-i5",
-        "https://linkedin.com/in/abhijeet-ghosh-tech"
+        "https://linkedin.com/in/abhijeet-ghosh-tech",
+        "https://wa.me/916299390773"
       ],
-      "knowsAbout": ["React", "JavaScript", "Three.js", "Frontend Development", "Web Development"]
+      "knowsAbout": [
+        "React", "JavaScript", "TypeScript", "HTML5", "CSS3",
+        "Three.js", "GSAP", "Tailwind CSS", "Vite",
+        "Python", "SQL", "Git", "Firebase", "REST APIs",
+        "Frontend Development", "Web Development", "UI/UX Design",
+        "Data Analytics", "Open Source"
+      ],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Open Source Contributor",
+        "name": "GirlScript Summer of Code 2026 — Global Rank #278"
+      }
+    }
+    </script>
+
+    <!-- WebSite Schema — For Google Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Abhijeet Ghosh Portfolio",
+      "url": "https://abhijeetweb.in",
+      "description": "Official portfolio of Abhijeet Ghosh — Frontend Developer from Jamshedpur, India.",
+      "author": {
+        "@type": "Person",
+        "name": "Abhijeet Ghosh"
+      }
+    }
+    </script>
+
+    <!-- ProfilePage Schema — For enhanced search results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Abhijeet Ghosh",
+        "url": "https://abhijeetweb.in"
+      },
+      "dateCreated": "2025-01-01",
+      "dateModified": "2026-07-27"
     }
     </script>
   </head>
   <body>
+    <!-- Skip to content — Accessibility -->
     <a href="#home" class="skip-link">Skip to main content</a>
+    
+    <!-- App Root -->
     <div id="root"></div>
+
+    <!-- Noscript fallback — for crawlers & users without JS -->
+    <noscript>
+      <div style="text-align:center; padding:60px 20px; font-family:system-ui; color:#f0f0f8; background:#050508; min-height:100vh;">
+        <h1 style="font-size:2.5rem; margin-bottom:16px;">Abhijeet Ghosh — Frontend Developer</h1>
+        <p style="font-size:1.1rem; max-width:600px; margin:0 auto 24px; color:#8888aa; line-height:1.7;">
+          Hi! I'm Abhijeet Ghosh, a Frontend Developer from Jamshedpur, India. 
+          I build high-performance web experiences using React, JavaScript, Three.js, GSAP & modern web technologies.
+        </p>
+        <h2 style="font-size:1.3rem; margin-bottom:12px;">Skills</h2>
+        <p style="color:#8888aa;">React · JavaScript · Three.js · GSAP · HTML5 · CSS3 · Tailwind · Python · SQL · Git · Firebase · Vite</p>
+        <h2 style="font-size:1.3rem; margin:24px 0 12px;">Contact</h2>
+        <p><a href="mailto:contact@abhijeetweb.in" style="color:#00d4ff;">contact@abhijeetweb.in</a></p>
+        <p><a href="https://github.com/code-with-abhi-i5" style="color:#00d4ff;">GitHub</a> · <a href="https://linkedin.com/in/abhijeet-ghosh-tech" style="color:#00d4ff;">LinkedIn</a></p>
+        <p style="margin-top:24px; color:#44445a; font-size:0.85rem;">Please enable JavaScript to view the full interactive portfolio.</p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

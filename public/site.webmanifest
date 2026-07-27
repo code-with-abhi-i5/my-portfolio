@@ -1,0 +1,21 @@
+{
+  "name": "Abhijeet Ghosh — Frontend Developer Portfolio",
+  "short_name": "Abhijeet Ghosh",
+  "description": "Frontend Developer crafting high-performance web experiences with React, JavaScript & Three.js",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en",
+  "dir": "ltr"
+}

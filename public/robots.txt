@@ -1,0 +1,15 @@
+# Robots.txt — Abhijeet Ghosh Portfolio
+# https://abhijeetweb.in
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://abhijeetweb.in/sitemap.xml
+
+# Disallow irrelevant paths
+Disallow: /api/
+Disallow: /.env
+
+# Crawl-delay for politeness
+Crawl-delay: 1
