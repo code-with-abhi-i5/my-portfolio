@@ -5,8 +5,9 @@ import Magnetic from './Magnetic.jsx';
 const NAV_ITEMS = [
   { id: 'home', num: '01', label: 'Home' },
   { id: 'about', num: '02', label: 'About' },
-  { id: 'projects', num: '03', label: 'Projects' },
-  { id: 'contact', num: '04', label: 'Contact' },
+  { id: 'education', num: '03', label: 'Education' },
+  { id: 'projects', num: '04', label: 'Projects' },
+  { id: 'contact', num: '05', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -34,7 +35,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      ['home', 'about', 'projects', 'contact'].forEach((id) => {
+      ['home', 'about', 'education', 'projects', 'contact'].forEach((id) => {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 130) setActive(id);
       });
