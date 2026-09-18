@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Magnetic from '../ui/Magnetic.jsx';
 import AvatarWithEffect from '../3d/AvatarWithEffect.jsx';
 import resumePdf from '../assets/Abhijeet Ghosh.pdf';
@@ -56,62 +56,44 @@ export default function Hero() {
 
   const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
-  // Memoize name letters to prevent re-renders from breaking GSAP
-  const abhijeetLetters = useMemo(() => {
-    return 'Abhijeet'.split('').map((char, i) => (
-      <span key={`a-${i}`} className="name-letter">
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ));
-  }, []);
-
-  const ghoshLetters = useMemo(() => {
-    return 'Ghosh'.split('').map((char, i) => (
-      <span key={`g-${i}`} className="name-letter">
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ));
-  }, []);
-
   useGSAP(() => {
-    // 1. Coordinated Elite Entrance
-    const tl = gsap.timeline();
+    // 1. Coordinated Rock-Solid Entrance
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.from('.hero-eyebrow', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' })
-      .from('.name-letter', { 
-        opacity: 0, 
-        y: 60, 
-        rotateX: -90,
-        stagger: 0.04, 
-        duration: 1, 
-        ease: 'elastic.out(1, 0.8)' 
-      }, '-=0.4')
-      .from(['.hero-typing-wrap', '.hero-bio'], { 
-        opacity: 0, 
-        y: 20, 
-        stagger: 0.2, 
-        duration: 0.8, 
-        ease: 'power3.out' 
-      }, '-=0.6')
-      .from('.hero-actions', { 
-        opacity: 0, 
-        scale: 0.8, 
-        duration: 0.6, 
-        ease: 'back.out(1.7)' 
-      }, '-=0.4')
-      .from('.hero-visual', { 
-        opacity: 0, 
-        x: 40, 
-        rotateY: -20,
-        duration: 1.2, 
-        ease: 'power4.out' 
-      }, '-=1')
-      .from('.hero-stats', { 
-        opacity: 0, 
-        y: 20, 
-        duration: 0.8, 
-        ease: 'power3.out' 
-      }, '-=0.8');
+    tl.fromTo('.hero-eyebrow', 
+        { opacity: 0, y: -20 }, 
+        { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }
+      )
+      .fromTo('.hero-name .first', 
+        { opacity: 0, y: 35 }, 
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power4.out', clearProps: 'all' }, 
+        '-=0.35'
+      )
+      .fromTo('.hero-name .last', 
+        { opacity: 0, y: 35 }, 
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power4.out', clearProps: 'all' }, 
+        '-=0.6'
+      )
+      .fromTo(['.hero-typing-wrap', '.hero-bio'], 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.7, clearProps: 'all' }, 
+        '-=0.5'
+      )
+      .fromTo('.hero-actions', 
+        { opacity: 0, scale: 0.85 }, 
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)', clearProps: 'all' }, 
+        '-=0.3'
+      )
+      .fromTo('.hero-visual', 
+        { opacity: 0, x: 40 }, 
+        { opacity: 1, x: 0, duration: 1.1, ease: 'power4.out', clearProps: 'all' }, 
+        '-=0.8'
+      )
+      .fromTo('.hero-stats', 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 0.7, clearProps: 'all' }, 
+        '-=0.6'
+      );
 
     // 2. 3D Mouse Parallax for Hero Visual
     const handleMouseMove = (e) => {
@@ -183,8 +165,8 @@ export default function Hero() {
           </div>
 
           <h1 className="hero-name">
-            <span className="first">{abhijeetLetters}</span>
-            <span className="last">{ghoshLetters}</span>
+            <span className="first">Abhijeet</span>
+            <span className="last">Ghosh</span>
           </h1>
 
           <div className="hero-typing-wrap">

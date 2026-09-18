@@ -104,17 +104,10 @@
   position: relative;
   display: inline-block;
   text-transform: uppercase;
-  perspective: 1200px;
 }
 
 .name-letter {
   display: inline-block;
-  transform-origin: center center;
-  color: inherit;
-  background: inherit;
-  -webkit-background-clip: inherit;
-  background-clip: inherit;
-  -webkit-text-fill-color: inherit;
 }
 
 .hero-eyebrow,
@@ -141,7 +134,7 @@
   background-clip: text;
   filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
   animation: shine 4s linear infinite;
-  transition: all 0.4s ease;
+  transition: filter 0.3s ease, letter-spacing 0.3s ease;
 }
 
 .hero-name .last {
@@ -150,7 +143,7 @@
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
-  transition: all 0.4s ease;
+  transition: -webkit-text-stroke 0.3s ease, filter 0.3s ease, transform 0.3s ease;
   margin-top: -5px;
 }
 
