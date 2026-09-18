@@ -59,7 +59,7 @@ const PROFS = [
 
 const INFO = [
   { l: 'Name', v: 'Abhijeet Ghosh' },
-  { l: 'Role', v: 'Frontend Developer' },
+  { l: 'Role', v: 'Full Stack Developer' },
   { l: 'Location', v: 'Jamshedpur, Jharkhand 🇮🇳' },
   { l: 'Status', v: '✅ Open to Work' },
 ];
@@ -245,9 +245,8 @@ export default function About() {
         {/* Left: Bio */}
         <div>
           <p className="about-text">
-            I&apos;m a <strong>Frontend Developer</strong> with a passion for building clean,
-            interactive web experiences. I work with <Keyword icon="react">React</Keyword>, <Keyword icon="js">JavaScript</Keyword>, and <Keyword icon="three">Three.js</Keyword> to craft
-            fast, visually engaging interfaces — backed by <Keyword icon="python">Python</Keyword> and SQL on the data side.
+            I&apos;m a <strong>Full Stack Developer</strong> with a passion for building clean,
+            interactive, and scalable web applications. I work across the stack with <Keyword icon="react">React</Keyword>, <Keyword icon="js">JavaScript</Keyword>, and <Keyword icon="three">Three.js</Keyword> on the frontend — backed by <Keyword icon="python">Python</Keyword>, Node.js, and SQL on the backend.
           </p>
 
           <p className="about-quote">
@@ -256,7 +255,7 @@ export default function About() {
 
           <p className="about-text">
             When I&apos;m not building projects, I&apos;m contributing to <Keyword icon="react">open-source</Keyword>,
-            experimenting with 3D animations, and staying current with the frontend ecosystem.
+            experimenting with 3D animations, and building modern full-stack systems.
           </p>
 
           {/* Achievement Highlight — GSSoC '26 */}

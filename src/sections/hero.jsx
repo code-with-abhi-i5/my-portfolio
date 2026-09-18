@@ -11,7 +11,7 @@ import './hero.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const ROLES = [
-  'Frontend Developer',
+  'Full Stack Developer',
   'Three.js Enthusiast',
   'Problem Solver',
 ];
@@ -259,7 +259,7 @@ export default function Hero() {
               <span className="badge-dot" />React &amp; TypeScript
             </div>
             <div className="float-badge float-badge-2">
-              <span className="badge-dot" />Frontend Architecture
+              <span className="badge-dot" />Full Stack Architecture
             </div>
             <div className="float-badge float-badge-3">
               <span className="badge-dot" />Open to Work

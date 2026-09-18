@@ -7,7 +7,7 @@ const LOG_MESSAGES = [
   { type: 'info', text: '> Loading core modules: React, GSAP, Three.js' },
   { type: 'success', text: '> Module injection successful.' },
   { type: 'info', text: '> Fetching developer metadata...' },
-  { type: 'data', text: '  { name: "Abhijeet Ghosh", role: "Frontend Developer" }' },
+  { type: 'data', text: '  { name: "Abhijeet Ghosh", role: "Full Stack Developer" }' },
   { type: 'info', text: '> Scanning proficiency levels...' },
   { type: 'success', text: '> React: 85% | JavaScript: 90% | CSS: 88%' },
   { type: 'info', text: '> Synchronizing GitHub repositories...' },

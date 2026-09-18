@@ -49,7 +49,7 @@ const PROFS = [
 
 const INFO = [
   { l: 'Name', v: 'Abhijeet Ghosh' },
-  { l: 'Role', v: 'Frontend Developer' },
+  { l: 'Role', v: 'Full Stack Developer' },
   { l: 'Location', v: 'Jamshedpur, Jharkhand 🇮🇳' },
   { l: 'Status', v: '✅ Open to Work' },
 ];
@@ -78,7 +78,7 @@ export default function About() {
         {/* Left: Bio */}
         <div>
           <p className="about-text reveal">
-            I&apos;m a <strong>Frontend Developer</strong> with a passion for building clean,
+            I&apos;m a <strong>Full Stack Developer</strong> with a passion for building clean,
             interactive web experiences. I work with React, JavaScript, and Three.js to craft
             fast, visually engaging interfaces — backed by Python and SQL on the data side.
           </p>

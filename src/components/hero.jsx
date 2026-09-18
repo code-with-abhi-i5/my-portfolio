@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AvatarWithEffect from './AvatarWithEffect.jsx';
 
 const ROLES = [
-  'Frontend Developer',
+  'Full Stack Developer',
   'Three.js Enthusiast',
   'Problem Solver',
 ];
