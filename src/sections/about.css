@@ -251,8 +251,7 @@
   border: 1px solid rgba(0, 212, 255, 0.18);
   overflow: hidden;
   isolation: isolate;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              border-color 0.4s ease;
+  transition: border-color 0.4s ease;
 }
 
 .achievement-card:hover {

@@ -70,32 +70,31 @@ export default function About() {
   const rankRef = useRef(null);
 
   useGSAP(() => {
-    // 1. Skill Tags Pop Animation with Float
+    // 1. Skill Tags Pop Animation
     gsap.utils.toArray('.skill-category').forEach((cat) => {
       gsap.fromTo(cat.querySelectorAll('.skill-tag'), 
         {
           opacity: 0,
-          scale: 0.8,
-          y: 20,
-          rotate: -5
+          scale: 0.85,
+          y: 15,
         },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          rotate: 0,
-          duration: 0.8,
-          stagger: 0.08,
-          ease: 'elastic.out(1, 0.8)',
+          duration: 0.6,
+          stagger: 0.05,
+          ease: 'power2.out',
+          clearProps: 'all',
           scrollTrigger: {
             trigger: cat,
-            start: 'top 88%',
+            start: 'top 92%',
           }
         }
       );
     });
 
-    // 2. Proficiency Bars Animation (Smoother)
+    // 2. Proficiency Bars Animation
     PROFS.forEach((prof, i) => {
       const bar = barsRef.current[i];
       if (!bar) return;
@@ -105,8 +104,9 @@ export default function About() {
         {
           width: `${prof.p}%`,
           opacity: 1,
-          duration: 2,
-          ease: 'power4.out',
+          duration: 1.5,
+          ease: 'power3.out',
+          clearProps: 'opacity',
           scrollTrigger: {
             trigger: bar,
             start: 'top 95%',
@@ -115,89 +115,86 @@ export default function About() {
       );
     });
 
-    // 3. Advanced 3D Tilt for Skills Section
-    const skillsSection = containerRef.current.querySelector('.about-grid > div:last-child');
-    if (skillsSection) {
-      const xTo = gsap.quickTo(skillsSection, 'rotateY', { duration: 0.4, ease: 'power2.out' });
-      const yTo = gsap.quickTo(skillsSection, 'rotateX', { duration: 0.4, ease: 'power2.out' });
-
-      skillsSection.style.perspective = '1000px';
-
-      const handleMove = (e) => {
-        const rect = skillsSection.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const xPercent = (x / rect.width - 0.5) * 8;
-        const yPercent = (y / rect.height - 0.5) * -8;
-
-        xTo(xPercent);
-        yTo(yPercent);
-      };
-
-      const handleLeave = () => {
-        xTo(0);
-        yTo(0);
-      };
-
-      skillsSection.addEventListener('mousemove', handleMove);
-      skillsSection.addEventListener('mouseleave', handleLeave);
-    }
-
-    // 4. Bio Text Reveal
-    gsap.from('.about-text', {
-      opacity: 0,
-      y: 30,
-      stagger: 0.3,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.about-text',
-        start: 'top 90%',
+    // 3. Bio Text Reveal
+    gsap.fromTo('.about-text', 
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: 'power3.out',
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '.about-text',
+          start: 'top 92%',
+        }
       }
-    });
+    );
 
-    // 5. Ghost Icons Float Animation
-    ['react', 'js', 'three', 'python'].forEach((icon) => {
-      gsap.to(`.ghost-${icon}`, {
-        y: '+=25',
-        x: '+=15',
-        rotate: '+=10',
-        duration: 4 + Math.random() * 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-    });
-
-    // 6. Achievement Card Reveal
-    gsap.from('.achievement-card', {
-      opacity: 0,
-      y: 40,
-      scale: 0.92,
-      duration: 1.1,
-      ease: 'back.out(1.6)',
-      scrollTrigger: {
-        trigger: '.achievement-card',
-        start: 'top 90%',
+    // 4. Achievement Card Reveal
+    gsap.fromTo('.achievement-card', 
+      { opacity: 0, y: 25, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '.achievement-card',
+          start: 'top 92%',
+        }
       }
-    });
+    );
 
-    // 7. Rank Count-Up Animation (0 → 278)
+    // 5. Info Grid Reveal
+    gsap.fromTo('.info-item',
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.08,
+        duration: 0.6,
+        ease: 'power2.out',
+        clearProps: 'all',
+        scrollTrigger: {
+          trigger: '.info-grid',
+          start: 'top 92%',
+        }
+      }
+    );
+
+    // 6. Rank Count-Up Animation (0 → 278)
     if (rankRef.current) {
       const counter = { val: 0 };
       gsap.to(counter, {
         val: 278,
-        duration: 2.4,
+        duration: 2,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '.achievement-card',
-          start: 'top 88%',
+          start: 'top 90%',
         },
         onUpdate: () => {
           if (rankRef.current) rankRef.current.textContent = Math.round(counter.val);
         }
       });
     }
+
+    // 7. Ghost Icons Float Animation
+    ['react', 'js', 'three', 'python'].forEach((icon) => {
+      gsap.to(`.ghost-${icon}`, {
+        y: '+=20',
+        x: '+=10',
+        rotate: '+=8',
+        duration: 4 + Math.random() * 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+    });
 
   }, { scope: containerRef });
 
